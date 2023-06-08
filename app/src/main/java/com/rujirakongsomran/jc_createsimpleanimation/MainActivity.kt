@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -53,7 +55,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    DogApp()
                 }
             }
         }
@@ -66,8 +68,8 @@ fun DogItem(
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val color by animateColorAsState(
-        targetValue = if(expanded) MaterialTheme.colorScheme.tertiaryContainer
+    val colorCard by animateColorAsState(
+        targetValue = if (expanded) MaterialTheme.colorScheme.tertiaryContainer
         else MaterialTheme.colorScheme.primaryContainer,
         label = "",
     )
@@ -80,7 +82,7 @@ fun DogItem(
                         stiffness = Spring.StiffnessMedium
                     )
                 )
-                .background(color = color)
+                .background(color = colorCard)
         ) {
             Row(
                 modifier = Modifier
@@ -131,10 +133,15 @@ fun DogItemButton(
 
 @Composable
 fun DogApp() {
-    DogItem(
-        dog = dogs[0],
-        modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-    )
+    LazyColumn(){
+        items(dogs){
+            DogItem(
+                dog = it,
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+            )
+        }
+    }
+
 }
 
 @Composable
@@ -194,7 +201,7 @@ fun DogHobby(
 @Preview
 @Composable
 fun DogPreview() {
-    JC_CreateSimpleAnimationTheme {
+    JC_CreateSimpleAnimationTheme(darkTheme = false) {
         DogApp()
     }
 }
