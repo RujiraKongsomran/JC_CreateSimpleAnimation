@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JC_CreateSimpleAnimation</string>
+    <string name="dog_name_1">Koda</string>
+    <string name="dog_name_2">Lola</string>
+    <string name="dog_name_3">Frankie</string>
+    <string name="dog_name_4">Nox</string>
+    <string name="dog_description_1">Eating treats on the terrace</string>
+    <string name="dog_description_2">Barking at Daddy</string>
+    <string name="dog_description_3">Stealing socks</string>
+    <string name="dog_description_4">Meeting new animals</string>
+    <string name="years_old">%d years old</string>
+    <string name="expand_button_content_description">See more or less information about a dog.</string>
+</resources>
